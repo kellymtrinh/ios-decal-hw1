@@ -22,33 +22,37 @@ class Words {
 //: ### variables the same type? If not, why?
 
 
-//: [EXPLAIN YOUR ANSWER HERE]
+//: [Yes, they are both optional Strings. The one in the init function is String? which is an optional and can have a possible value of nil. The instance variables wordA and wordB are String!, which is a forced unwrapping of an optional that will give back an optional type object.]
 
 
 //: ## Q2: Variable Types and Function Types
-    func arePalindromes(_ words: [String]) -> Bool {
-        let reversedWords = words.map() {String($0.characters.reversed())}
-        let numElements = words.count
+    class func arePalindromes(_ Words: [String]) -> Bool {
+        let reversedWords = Words.map() {String($0.characters.reversed())}
+        let numElements = Words.count
         
         for i in 0 ..< numElements {
-            if words[i] != reversedWords[i] {
+            if Words[i] != reversedWords[i] {
                 return false
             }
         }
+        return true
     }
+    
+    
+    
 //: ### Why does the compiler dislike the **for loop**? Fix it.
 //: ### What else is wrong with this function? You may have to refer to (but **not**
 //: ### change) the code at the very bottom. Debug the function.
 
 
-//: [EXPLAIN YOUR ANSWER HERE]
+//: [Ignoring the for loop part of this question since Piazza says it was accidentally fixed. The part I fixed is that arePalindromes is supposed to be a class function, not an instance function. Also, the function needs to return true at the end otherwise it is missing a return value.]
 
 
 //: ## Q3: More Functions and Object Initialization
-    class func isAnagram() -> Bool {
-        var countLetters : [Character : Int] //Line X
-        var lenA = self.wordA.characters.count
-        var lenB = self.wordB.characters.count
+    func isAnagram() -> Bool {
+        var countLetters = [Character : Int]() //Line X
+        let lenA = self.wordA.characters.count
+        let lenB = self.wordB.characters.count
         
         if lenA != lenB {
             return false
@@ -75,13 +79,13 @@ class Words {
             }
         }
         
-        for (letter, count) in countLetters {
+        for count in countLetters.values {
             if count != 0 {
                 return false
             }
         }
         
-        return nil
+        return true
     }
 //: ### What is the problem with declaring **countLetters** as we do in **Line X**,
 //: ### and then using it in **Line Y**? Fix it (by only changing **Line X**).
@@ -89,7 +93,7 @@ class Words {
 //: ### change) the code at the very bottom. Debug the function.
 
 
-//: [EXPLAIN YOUR ANSWER HERE]
+//: [In Line X, a : is used instead of a = to declare a dictionary. Also, empty dictionaries must be initialized using parenthesis () at the end. For what else is wrong, this function was a class function when it should be an instance function. Also, the function cannot return nil at the end when its expected type is a Boolean.]
     
     
 }
